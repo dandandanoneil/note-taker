@@ -13,11 +13,16 @@ module.exports = function(app) {
         res.json(notesArray);
     });
     
-    // "POST" method adds the request (an object with title and text keys) to the notesArray required in from db.json, then writes over that file with the new array
+    // "POST" method gives the request (an object with title and text keys) a unique id, adds it to the notesArray required in from db.json, writes over that file with the new array, and returns the new note as an object
     app.post("/api/notes", function(req, res) {
+        // Creates a new note with the data provided, and adds a unique id
         let newNote = req.body;
         newNote.id = uniqid();
+
+        // Adds the new note to the array
         notesArray.push(newNote);
+
+        // Writes over the db file with the updated array of notes, then returns the new note object
         fs.writeFile(path.join(__dirname, "../db/db.json"), JSON.stringify(notesArray), err => {
             if (!err) res.json(newNote);
             else throw new Error(err);
@@ -25,11 +30,10 @@ module.exports = function(app) {
         
     });
 
-    // "DELETE" method removes the specified note from the array and rewrites db.json to reflect the change
+    // "DELETE" method removes the specified note from the array, rewrites db.json to reflect the change, and returns the updated array of notes
     app.delete("/api/notes/:id", function(req, res) {
-        let noteID = req.params.id;
-
         // Find the note with the specified ID and remove it from notesArray
+        let noteID = req.params.id;
         for (var i = 0; i < notesArray.length; i++) {
             if (noteID === notesArray[i].id) {
                 notesArray.splice(i, 1);
@@ -37,6 +41,7 @@ module.exports = function(app) {
             }
         }
 
+        // Write over the db file with the updates array, then return the updated array
         fs.writeFile(path.join(__dirname, "../db/db.json"), JSON.stringify(notesArray), err => {
             if (!err) res.json(notesArray);
             else throw new Error(err);

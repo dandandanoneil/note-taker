@@ -1,19 +1,16 @@
 // Dependency
 const express = require("express");
 
-// Create a server
+// Create a server & set the port for localhost & Heroku use
 const app = express();
-
-// Set the port for local & Heroku use
 const PORT = process.env.PORT || 8080;
 
-
+// Create req.params and req.body
 app.use(express.urlencoded({ extended: true }));
-app.use(express.static('public'))
 app.use(express.json());
 
-require("./routes/apiRoutes")(app);
-require("./routes/htmlRoutes")(app);
+// Tell the server to look in the public folder for static files (css, js, html, etc)
+app.use(express.static('public'));
 
 // Establish listener
 app.listen(PORT, function() {

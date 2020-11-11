@@ -3,25 +3,22 @@ An application created from an existing frontend that uses an Express.js backend
 
 ## Table of Contents
 - [Installation Steps](#installation)
-- [Usage Instructions](#usage-instructions)
-- [Screenshots](#screenshots)
 - [Deployed Application](#deployed-application)
+- [Screenshots](#screenshots)
 - [Licenses](#licenses)
 
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 
 ---
 ## Installation 
-Node.js and npm must be installed, as well as the Express framework.
-
-## Usage Instructions
-*Usage instructions here...*
-
-## Screenshots
-![Note Taker Screenshot](images/note-taker.png)
+Node.js and npm must be installed, as well as the Express framework and the Uniqid package.
 
 ## Deployed  Application
-[View the Deployed Application on Heroku](#)
+[View the Deployed Application on Heroku](https://dandandanoneil-note-taker.herokuapp.com/)
+
+## Screenshots
+![Note Taker Landing Page](images/note-taker-index.png)
+![Note Taker Notes Page](images/note-taker-notes.png)
 
 ## Licenses
 ### GNU GPL vs License
