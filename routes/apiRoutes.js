@@ -11,22 +11,25 @@ module.exports = function(app) {
     
     // "POST" method adds the request (an object with title and text keys) to the notesArray required in from db.json, then writes over that file with the new array
     app.post("/api/notes", function(req, res) {
-        notesArray.push(req);
-        fs.writeFile("../db/db.json", JSON.stringify(notesArray));
-        res.json(req);
+        let newNote = req.body;
+        notesArray.push(newNote);
+        fs.writeFile("../db/db.json", JSON.stringify(notesArray), err => throw err);
+        res.json(newNote);
     });
 
     // "DELETE" methos removes the specified note from the array and rewrites db.json to reflect the change
     app.post("/api/notes/:id", function(req, res) {
         let noteID = req.params.id;
 
+        // Find the note with the specified ID and remove it from notesArray
         for (var i = 0; i < notesArray.length; i++) {
             if (noteID === notesArray[i].id) {
-              return res.json(characters[i]);
+                notesArray.splice(i, 1);
+                i--;
             }
         }
 
-        fs.writeFile("../db/db.json", JSON.stringify(notesArray));
-        res.json({ ok: true });
+        fs.writeFile("../db/db.json", JSON.stringify(notesArray), err => throw err);
+        res.json(notesArray);
     });    
 }
