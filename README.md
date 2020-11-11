@@ -18,7 +18,7 @@ Node.js and npm must be installed, as well as the Express framework.
 *Usage instructions here...*
 
 ## Screenshots
-![Note Taker Screenshot](assets/images/note-taker.png)
+![Note Taker Screenshot](images/note-taker.png)
 
 ## Deployed  Application
 [View the Deployed Application on Heroku](#)
