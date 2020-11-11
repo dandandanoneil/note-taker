@@ -11,6 +11,8 @@ app.use(express.json());
 
 // Tell the server to look in the public folder for static files (css, js, html, etc)
 app.use(express.static('public'));
+require("./routes/apiRoutes")(app);
+require("./routes/htmlRoutes")(app);	
 
 // Establish listener
 app.listen(PORT, function() {
