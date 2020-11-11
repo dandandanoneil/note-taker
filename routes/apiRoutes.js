@@ -13,7 +13,9 @@ module.exports = function(app) {
     app.post("/api/notes", function(req, res) {
         let newNote = req.body;
         notesArray.push(newNote);
-        fs.writeFile("../db/db.json", JSON.stringify(notesArray), err => throw err);
+        fs.writeFile("../db/db.json", JSON.stringify(notesArray), err => {
+            throw err;
+        });
         res.json(newNote);
     });
 
@@ -29,7 +31,9 @@ module.exports = function(app) {
             }
         }
 
-        fs.writeFile("../db/db.json", JSON.stringify(notesArray), err => throw err);
+        fs.writeFile("../db/db.json", JSON.stringify(notesArray), err => {
+            throw err;
+        });
         res.json(notesArray);
     });    
 }
