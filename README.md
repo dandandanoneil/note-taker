@@ -17,7 +17,9 @@ Node.js and npm must be installed, as well as the Express framework and the Uniq
 [View the Deployed Application on Heroku](https://dandandanoneil-note-taker.herokuapp.com/)
 
 ## Screenshots
+Landing Page:
 ![Note Taker Landing Page](images/note-taker-index.png)
+Notes Page:
 ![Note Taker Notes Page](images/note-taker-notes.png)
 
 ## Licenses
